@@ -1,8 +1,10 @@
 <template>
   <div class="login">
-    <div class="main">
+    <div class="header">
       <img src="../../img/后退.png" alt="" class="logout">
       <div class="title">登录</div>
+    </div>
+
       <div>
         <img src="../../img/logo.png" alt="">
       </div>
@@ -13,8 +15,6 @@
           <button class="button">登录</button>
         </form>
       </div>
-
-    </div>
 
 
   </div>

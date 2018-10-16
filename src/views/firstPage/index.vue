@@ -2,13 +2,16 @@
   <div class="first-page">
     <div class="head clearfix">
       <img src="../../img/logo.png" alt="" class="fll">
-      <div class="login flr">登录</div>
+      <router-link to="/login">
+        <div class="login flr">登录</div>
+      </router-link>
+
     </div>
     <!--轮播图-->
     <div class="swiper">
       <swiper :options="swiperOption">
-        <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-          <img :src="slide.imgUrl" alt="">
+        <swiper-slide v-for="(slide, index) in swiperSlides" :key="index" >
+          <img :src="slide.imgUrl" alt="" @click="getSwiperMe(slide.url)">
           <div class="swiper-title">{{slide.title}}</div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -19,7 +22,7 @@
       <div class="top">
         <div class="left">
           <div>
-            <img src="../../img/icon_01.png" alt="">
+            <img src="../../img/icon_01.png" alt="" @click="getSpace(0)">
           </div>
 
           <div class="text">信工新闻眼</div>
@@ -32,9 +35,9 @@
           <div class="text">掌上组织生活</div>
         </div>
         <div class="right">
-          <div>
+          <router-link to="/login">
             <img src="../../img/icon_03.png" alt="">
-          </div>
+          </router-link>
 
           <div class="text">党员互动</div>
         </div>
@@ -42,21 +45,20 @@
       <div class="bottom">
         <div class="left">
           <div>
-            <img src="../../img/icon_04.png" alt="">
+            <img src="../../img/icon_04.png" alt="" @click="getSpace(3)">
           </div>
 
           <div class="text">党建一点通</div>
         </div>
         <div class="middle">
           <div>
-            <img src="../../img/icon_05.png" alt="">
+            <img src="../../img/icon_05.png" alt="" @click="getSpace(5)">
           </div>
-
           <div class="text">党员亮身份</div>
         </div>
         <div class="right">
           <div>
-            <img src="../../img/icon_06.png" alt="">
+            <img src="../../img/icon_06.png" alt="" @click="todayD">
           </div>
           <div class="text">党史的今天</div>
         </div>
@@ -69,15 +71,15 @@
     <!--背景图-->
     <div class="back-img">
       <div class="left-back">
-        <div class="img1"></div>
+        <div class="img1" @click="getSpace()"></div>
       </div>
       <div class="middle-back">
-        <div class="img2"></div>
-        <div class="img3"></div>
+        <div class="img2" @click="getSpace(6)"></div>
+        <div class="img3" @click="getSpace(4)"></div>
       </div>
       <div class="right-back">
-        <div class="img4"></div>
-        <div class="img5"></div>
+        <div class="img4" @click="getSpace()"></div>
+        <div class="img5" @click="getSpace(1)"></div>
       </div>
     </div>
 
@@ -87,7 +89,7 @@
 <script>
   import 'swiper/dist/css/swiper.css'
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
-
+  import router from '../../router/index'
   export default {
     name: "index",
     components: {
@@ -110,9 +112,16 @@
           if (res.code == 1) {
             this.swiperSlides = res.rows
           }
-
-
         })
+      },
+      getSwiperMe(id){
+        router.push(`/swipperDetail/${id}`)
+      },
+      getSpace(type){
+        router.push(`/spaceDetail/${type}`)
+      },
+      todayD(){
+        router.push('/todayD')
       }
     },
     created() {
@@ -242,16 +251,16 @@
     background-size: 7.5rem 3.3rem;
   }
   .img2{
-    background-position: -127px 0;
+    background-position: -2.5rem 0;
   }
   .img3{
-    background-position: -127px -80px;
+    background-position: -2.5rem -1.65rem;
   }
   .img4{
-    background-position: -251px 0;
+    background-position: -5rem 0;
   }
   .img5{
-    background-position: -251px 80px;
+    background-position: -5rem 1.65rem;
   }
 
 </style>
