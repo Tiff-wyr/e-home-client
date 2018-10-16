@@ -1,0 +1,13 @@
+.clearfix{
+  content: '';
+  display: block;
+  clear: both;
+  width: 0;
+  height: 0;
+}
+.fll{
+  float: left;
+}
+.flr{
+  float: right;
+}
