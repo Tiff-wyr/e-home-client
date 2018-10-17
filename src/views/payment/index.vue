@@ -13,10 +13,15 @@
           <use xlink:href="#icon-umidd17"></use>
         </svg>
         <div class="text">支付宝</div>
-        <img src="../../img/right.png" alt=""  class="arrow">
+        <img src="../../img/right.png" alt="" class="arrow">
       </div>
-      <div v-show="isShowing" class="mask">
-        <img src="" alt="">
+      <div v-show="isShowing" class="show">
+        <div class="mask" @click="mask()"></div>
+        <img src="../../img/weixin.png" alt="">
+      </div>
+      <div v-show="isShow" class="show">
+        <div class="mask"  @click="mask()"></div>
+        <img src="../../img/zfb.jpg" alt="">
       </div>
     </div>
 </template>
@@ -27,14 +32,21 @@
       data(){
           return {
             isShowing:false,
+            isShow:false
           }
       },
       methods:{
         wx(type){
           if(type == 0){
             this.isShowing=true
+          }else{
+            this.isShow=true
           }
         },
+        mask(){
+          this.isShowing=false
+          this.isShow=false
+        }
 
       }
     }
@@ -51,6 +63,7 @@
   box-sizing: border-box;
   border-bottom: 1px solid #ccc;
   font-size: 0;
+
 }
 .zf{
   width: 7.5rem;
@@ -90,4 +103,16 @@
     background: rgba(0,0,0,0.4);
     z-index: 2;
   }
+  .show{
+    img{
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 5rem;
+      z-index: 998;
+    }
+  }
+
 </style>

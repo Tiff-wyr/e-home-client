@@ -1,19 +1,23 @@
 <template>
   <div class="login">
-    <div class="header">
+    <div class="message">
       <div class="title">登录</div>
     </div>
+    <div class="tp">
+      <img src="../../img/logo.png" alt="">
+    </div>
+    <div class="inp">
+      <form action="">
+        <input type="text" placeholder="身份证号">
+        <input type="password" placeholder="密码">
+        <button class="button">
+          <router-link to="/myMessage">
+            登录
+          </router-link>
 
-      <div>
-        <img src="../../img/logo.png" alt="">
-      </div>
-      <div class="inp">
-        <form action="">
-          <input type="text" placeholder="身份证号">
-          <input type="text" placeholder="密码">
-          <button class="button">登录</button>
-        </form>
-      </div>
+        </button>
+      </form>
+    </div>
 
 
   </div>
@@ -28,35 +32,38 @@
 <style scoped lang="scss">
   .login {
     background: #c50206;
+    width: 7.5rem;
     height: 100vh;
-    .main {
-      margin: 0 auto;
-      width: 355px;
-      .title {
-        color: #fff;
-        width: 355px;
-        height: 43px;
-        line-height: 43px;
-        font-weight: 500;
+    .message{
+      width: 7.5rem;
+      .title{
         text-align: center;
-      }
-      img {
-        display: block;
-        width: 203px;
-        height: 48px;
-        margin: 30px auto;
-
+        color: #fff;
+        height: 0.86rem;
+        line-height: 0.86rem;
+        width: 7.1rem;
+        margin: 0 auto;
+        font-size: 0.34rem;
       }
     }
   }
 
+.tp{
+  text-align: center;
+  margin: 0.2rem 0;
+  img{
+    width: 4.0626rem;
+    height: 0.9772rem;
+  }
+}
+
   input {
     background: #c50206;
     border: 1px solid #ff0;
-    border-radius: 5px;
-    padding: 0 5px;
-    width: 300px;
-    height: 41px;
+    border-radius: 0.1rem;
+    padding: 0 0.1rem;
+    width: 6rem;
+    height: 0.832rem;
     /*margin: 10px 0;*/
     color: #fff;
     font-weight: 500;
@@ -69,17 +76,17 @@
 
   .button {
     background: #e43228;
-    width: 300px;
-    height: 41px;
-    border-radius: 5px;
+    width: 6rem;
+    height: 0.832rem;
+    border-radius: 0.1rem;
     border: none;
-  }
 
-  .main .logout{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 36px;
-    height: 44px;
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+  input::-webkit-input-placeholder{
+    color: #fff;
   }
 </style>

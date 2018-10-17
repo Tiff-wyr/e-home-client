@@ -5,7 +5,9 @@
     </div>
     <div class="banner">
       <div class="tx"><img src="../../img/头像.png" alt=""></div>
-      <div class="loging">还没有登录，请登录</div>
+      <router-link to="/login">
+        <div class="loging">还没有登录，请登录</div>
+      </router-link>
     </div>
     <div class="bottom">
 
@@ -79,7 +81,7 @@
     text-align: center;
     .loging{
       text-align: center;
-      width: 2.2118rem;
+      width: 7.5rem;
       height: 0.32rem;
       color: #fff;
       font-size:0.15rem;
@@ -87,6 +89,7 @@
     }
     .tx{
       font-size: 0;
+      margin-bottom: 0.1rem;
       img{
         width: 1.25rem;
         height: 1.25rem;
@@ -132,5 +135,8 @@
     }
   }
 
+a{
+  text-decoration: none;
 
+}
 </style>
