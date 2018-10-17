@@ -5,9 +5,10 @@
     </div>
     <div class="banner">
       <div class="tx"><img src="../../img/头像.png" alt=""></div>
-      <router-link to="/login">
+      <router-link to="/login" v-if="!token">
         <div class="loging">还没有登录，请登录</div>
       </router-link>
+      <div class="loging">{{userInfo.username}}</div>
     </div>
     <div class="bottom">
 
@@ -18,14 +19,14 @@
         </div>
 
 
-        <div class="text1">
+        <div class="text1" @click="personScore()">
           <img src="../../img/icon2.png" alt="" class="sipp">
           <div class="text"> 个人量化积分</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
         </div>
 
 
-        <div class="text1">
+        <div class="text1" @click="passwordG()">
           <img src="../../img/icon3.png" alt="" class="sipp">
           <div class="text"> 修改密码</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
@@ -46,16 +47,30 @@
 
 <script>
   import router from '../../router/index'
+  import {mapState, mapMutations} from 'vuex'
     export default {
         name: "index",
       data(){
           return {}
       },
       methods:{
+        ...mapMutations(['setUser','setToken']),
         payment(){
           router.push('/payment')
+        },
+        people(){
+          router.push('/peresonMessage')
+        },
+        personScore(){
+          router.push('/personScore')
+        },
+        passwordG(){
+          router.push('/passwordG')
         }
       },
+      computed: {
+        ...mapState(['token','userInfo'])
+      }
     }
 </script>
 

@@ -11,6 +11,10 @@ import informDetail from '@/views/informDetail/index'
 import zhangLife from '@/views/zhangLife/index'
 import mapDetail from '@/views/mapDetail/index'
 import payment from '@/views/payment/index'
+import peresonMessage from '@/views/peresonMessage/index'
+import personScore from '@/views/personScore/index'
+import scoreM from '@/views/scoreM/index'
+import passwordG from '@/views/passwordG/index'
 
 
 Vue.use(Router)
@@ -64,6 +68,22 @@ export default new Router({
     {
       path: '/payment',
       component: payment
-    }
+    },
+    {
+      path: '/peresonMessage',
+      component: peresonMessage
+    },
+    {
+      path: '/personScore',
+      component: personScore
+    },
+    {
+      path: '/scoreM',
+      component: scoreM
+    },
+    {
+      path: '/passwordG',
+      component: passwordG
+    },
   ]
 })

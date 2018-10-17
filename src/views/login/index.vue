@@ -22,6 +22,7 @@
 
 <script>
   import router from '../../router/index'
+  import { mapMutations } from 'vuex'
   export default {
     name: "login",
     data(){
@@ -33,10 +34,10 @@
       }
     },
     methods:{
+      ...mapMutations(['setUser','changeTitle','setToken']),
       login(){
         if(this.formData.id_card){
           if (this.formData.password){
-
             //请求类型有application/json multipart/form-data 还有一个男朋友不会
             //application/json是平常的写法
             //multipart/form-data 是这个 let form = new FormData()
@@ -46,8 +47,8 @@
             console.log(form);
             this.$axios.post('/hhdj/user/userLogin.do',form).then(res=>{
               if(res.code == 1){
-                this.token=res.token
-
+                this.setToken(res.token)
+                this.setUser(res.data)
                 router.push('/myMessage')
               }
             })
