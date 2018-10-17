@@ -9,7 +9,7 @@
     </div>
     <div class="bottom">
 
-        <div class="text1">
+        <div class="text1" @click="people()">
           <img src="../../img/icon1.png" alt="" class="sipp">
           <div class="text"> 个人信息</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="text1">
+        <div class="text1" @click="payment()">
           <img src="../../img/icon4.png" alt="" class="sipp">
           <div class="text"> 党费缴纳</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
@@ -43,8 +43,17 @@
 </template>
 
 <script>
+  import router from '../../router/index'
     export default {
-        name: "index"
+        name: "index",
+      data(){
+          return {}
+      },
+      methods:{
+        payment(){
+          router.push('/payment')
+        }
+      },
     }
 </script>
 

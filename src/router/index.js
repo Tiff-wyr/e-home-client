@@ -9,6 +9,8 @@ import spaceDetail from '@/views/spaceDetail/index'
 import todayD from '@/views/todayD/index'
 import informDetail from '@/views/informDetail/index'
 import zhangLife from '@/views/zhangLife/index'
+import mapDetail from '@/views/mapDetail/index'
+import payment from '@/views/payment/index'
 
 
 Vue.use(Router)
@@ -17,7 +19,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/notification',
+      redirect: '/MyMessage',
     },
     {
       path: '/swipperDetail/:id',
@@ -34,6 +36,10 @@ export default new Router({
     {
       path: '/zhangLife',
       component: zhangLife,
+    },
+    {
+      path: '/mapDetail',
+      component: mapDetail,
     },
     {
       path: '/informDetail/:id',
@@ -54,6 +60,10 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/payment',
+      component: payment
     }
   ]
 })
