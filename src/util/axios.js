@@ -23,15 +23,17 @@ class Axios {
     return new Promise((resolve, reject) => {
       this.instance[method](url, data, config).then(res => {
         resolve(res.data)
+      }).catch(err => {
+        reject(err)
       })
     })
   }
 
   static put(url, data, config) {
-    this.fetch(url,data,config,'put')
+    return this.fetch(url,data,config,'put')
   }
   static post(url, data, config) {
-    this.fetch(url,data,config,'post')
+    return this.fetch(url,data,config,'post')
   }
 
 }

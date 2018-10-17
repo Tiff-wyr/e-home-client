@@ -8,13 +8,10 @@
     </div>
     <div class="inp">
       <form action="">
-        <input type="text" placeholder="身份证号">
-        <input type="password" placeholder="密码">
-        <button class="button">
-          <router-link to="/myMessage">
+        <input type="text" placeholder="身份证号" v-model="formData.id_card">
+        <input type="password" placeholder="密码" v-model="formData.password">
+        <button class="button" @click="login()">
             登录
-          </router-link>
-
         </button>
       </form>
     </div>
@@ -24,8 +21,40 @@
 </template>
 
 <script>
+  import router from '../../router/index'
   export default {
-    name: "login"
+    name: "login",
+    data(){
+      return {
+        formData:{
+          id_card:'',
+          password:''
+        }
+      }
+    },
+    methods:{
+      login(){
+        if(this.formData.id_card){
+          if (this.formData.password){
+
+            //请求类型有application/json multipart/form-data 还有一个男朋友不会
+            //application/json是平常的写法
+            //multipart/form-data 是这个 let form = new FormData()
+            let form = new FormData()
+            form.append('id_card',this.formData.id_card)
+            form.append('password',this.formData.password)
+            console.log(form);
+            this.$axios.post('/hhdj/user/userLogin.do',form).then(res=>{
+              if(res.code == 1){
+                this.token=res.token
+
+                router.push('/myMessage')
+              }
+            })
+          }
+        }
+      }
+    },
   }
 </script>
 
@@ -80,11 +109,6 @@
     height: 0.832rem;
     border-radius: 0.1rem;
     border: none;
-
-    a{
-      text-decoration: none;
-      color: #fff;
-    }
   }
   input::-webkit-input-placeholder{
     color: #fff;
