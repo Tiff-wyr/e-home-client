@@ -3,7 +3,7 @@
     <div class="inform">
       <div class="title">通知早知道</div>
     </div>
-    <div class="inform-wrap" v-for="(item,index) in formData">
+    <div class="inform-wrap" v-for="(item,index) in formData" @click="inform(item.newsId)">
       <div class="inform-img">
         <img src="../../img/喇叭.png" alt="">
       </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import router from '../../router/index'
     export default {
       name: "index",
       data(){
@@ -32,6 +33,9 @@
             }
 
           })
+        },
+        inform(id){
+          router.push(`/informDetail/${id}`)
         }
       },
       created(){

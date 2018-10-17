@@ -8,6 +8,7 @@ import swipperDetail from '@/views/swipperDetail/index'
 import spaceDetail from '@/views/spaceDetail/index'
 import todayD from '@/views/todayD/index'
 import informDetail from '@/views/informDetail/index'
+import zhangLife from '@/views/zhangLife/index'
 
 
 Vue.use(Router)
@@ -16,7 +17,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/firstPage',
+      redirect: '/notification',
     },
     {
       path: '/swipperDetail/:id',
@@ -31,7 +32,11 @@ export default new Router({
       component: firstPage,
     },
     {
-      path: '/informDetail',
+      path: '/zhangLife',
+      component: zhangLife,
+    },
+    {
+      path: '/informDetail/:id',
       component: informDetail,
     },
     {

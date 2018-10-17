@@ -29,7 +29,7 @@
         </div>
         <div class="middle">
           <div>
-            <img src="../../img/icon_02.png" alt="">
+            <img src="../../img/icon_02.png" alt="" @click="enter()">
           </div>
 
           <div class="text">掌上组织生活</div>
@@ -122,6 +122,9 @@
       },
       todayD(){
         router.push('/todayD')
+      },
+      enter(){
+        router.push('/zhangLife')
       }
     },
     created() {
