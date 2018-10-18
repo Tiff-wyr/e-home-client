@@ -5,40 +5,45 @@
     </div>
     <div class="banner">
       <div class="tx"><img src="../../img/头像.png" alt=""></div>
-      <router-link to="/login" v-if="!token">
-        <div class="loging">还没有登录，请登录</div>
-      </router-link>
-      <div class="loging">{{userInfo.username}}</div>
+      <div v-if="!token">
+        <div class="loging" @click="login">还没有登录，请登录</div>
+      </div>
+      <div class="loging" v-else>{{userInfo.username}}</div>
     </div>
     <div class="bottom">
 
-        <div class="text1" @click="people()">
+        <div class="text1" @click="people">
           <img src="../../img/icon1.png" alt="" class="sipp">
           <div class="text"> 个人信息</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
         </div>
 
 
-        <div class="text1" @click="personScore()">
+        <div class="text1" @click="personScore">
           <img src="../../img/icon2.png" alt="" class="sipp">
           <div class="text"> 个人量化积分</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
         </div>
 
 
-        <div class="text1" @click="passwordG()">
+        <div class="text1" @click="passwordG">
           <img src="../../img/icon3.png" alt="" class="sipp">
           <div class="text"> 修改密码</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
         </div>
 
 
-        <div class="text1" @click="payment()">
+        <div class="text1" @click="payment">
           <img src="../../img/icon4.png" alt="" class="sipp">
           <div class="text"> 党费缴纳</div>
           <img src="../../img/arrow.png" alt="" class="arrow">
         </div>
 
+    </div>
+    <div class="butt" v-if="token">
+      <button @click="logout">
+        退出登录
+      </button>
     </div>
   </div>
 
@@ -59,13 +64,19 @@
           router.push('/payment')
         },
         people(){
-          router.push('/peresonMessage')
+          router.push('/personMessage')
         },
         personScore(){
           router.push('/personScore')
         },
         passwordG(){
           router.push('/passwordG')
+        },
+        login(){
+          router.push('/login')
+        },
+        logout(){
+          router.push('/login')
         }
       },
       computed: {
@@ -152,6 +163,21 @@
 
 a{
   text-decoration: none;
-
 }
+  .butt{
+    width: 7.5rem;
+    text-align: center;
+    button{
+      width: 7.1rem;
+      height: 0.94rem;
+      color: #fff;
+      font-size: 0.4rem;
+      background: #c50201;
+      padding: 0 0.24rem;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      border-radius: 0.15rem;
+      overflow: hidden;
+    }
+  }
 </style>

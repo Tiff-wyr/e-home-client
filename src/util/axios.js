@@ -1,9 +1,3 @@
-/**
- * Created by Administrator on 2018/10/15 0015.
- */
-/**
- * Created by Administrator on 2018/10/11 0011.
- */
 import axios from 'axios'
 import store from '../store'
 class Axios {
@@ -21,7 +15,6 @@ class Axios {
         params: data,
         ...config
       }
-
       ).then(res => {
         resolve(res.data)
       })
@@ -51,6 +44,5 @@ class Axios {
   }
 
 }
-
 export default Axios
 

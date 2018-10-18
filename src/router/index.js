@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/views/login/index'
-import MyMessage from '@/views/myMessage/index'
+import myMessage from '@/views/myMessage/index'
 import firstPage from '@/views/firstPage/index'
 import notification from '@/views/notification/index'
 import swipperDetail from '@/views/swipperDetail/index'
@@ -11,10 +11,12 @@ import informDetail from '@/views/informDetail/index'
 import zhangLife from '@/views/zhangLife/index'
 import mapDetail from '@/views/mapDetail/index'
 import payment from '@/views/payment/index'
-import peresonMessage from '@/views/peresonMessage/index'
+import personMessage from '@/views/personMessage/index'
 import personScore from '@/views/personScore/index'
 import scoreM from '@/views/scoreM/index'
 import passwordG from '@/views/passwordG/index'
+import dangD from '@/views/dangD/index'
+import reactionDetail from '@/views/reactionDetail/index'
 
 
 Vue.use(Router)
@@ -23,7 +25,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/MyMessage',
+      redirect: '/firstPage',
     },
     {
       path: '/swipperDetail/:id',
@@ -58,8 +60,8 @@ export default new Router({
       component: notification,
     },
     {
-      path: '/MyMessage',
-      component: MyMessage,
+      path: '/myMessage',
+      component: myMessage,
     },
     {
       path: '/login',
@@ -70,8 +72,8 @@ export default new Router({
       component: payment
     },
     {
-      path: '/peresonMessage',
-      component: peresonMessage
+      path: '/personMessage',
+      component: personMessage
     },
     {
       path: '/personScore',
@@ -84,6 +86,14 @@ export default new Router({
     {
       path: '/passwordG',
       component: passwordG
+    },
+    {
+      path: '/dangD',
+      component: dangD
+    },
+    {
+      path: '/reactionDetail/:id',
+      component: reactionDetail
     },
   ]
 })

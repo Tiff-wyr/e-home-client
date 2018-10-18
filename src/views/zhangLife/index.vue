@@ -1,6 +1,11 @@
 <template>
     <div>
-      <div class="inform">
+      <div class="message">
+        <div @click="$router.go(-1)">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shangyiye"></use>
+          </svg>
+        </div>
         <div class="title">掌上生活</div>
       </div>
       <div class="img">
@@ -54,9 +59,9 @@ import router from '../../router/index'
 </script>
 
 <style scoped lang="scss">
-  .inform{
+  .message{
+    width: 7.5rem;
     background: #c50206;
-    width: 100%;
     .title{
       text-align: center;
       color: #fff;
@@ -66,7 +71,16 @@ import router from '../../router/index'
       margin: 0 auto;
       font-size: 0.34rem;
     }
+    .icon{
+      width: 0.9rem;
+      height: 0.9rem;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
+
   .img{
     font-size: 0;
     img{

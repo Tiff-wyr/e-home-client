@@ -2,9 +2,12 @@
   <div class="first-page">
     <div class="head clearfix">
       <img src="../../img/logo.png" alt="" class="fll">
-      <router-link to="/login">
-        <div class="login flr">登录</div>
-      </router-link>
+      <div v-if="!token">
+        <router-link to="/login">
+          <div class="login flr">登录</div>
+        </router-link>
+      </div>
+
 
     </div>
     <!--轮播图-->
@@ -29,16 +32,20 @@
         </div>
         <div class="middle">
           <div>
-            <img src="../../img/icon_02.png" alt="" @click="enter()">
+            <img src="../../img/icon_02.png" alt="" @click="enter">
           </div>
 
           <div class="text">掌上组织生活</div>
         </div>
         <div class="right">
-          <router-link to="/login">
-            <img src="../../img/icon_03.png" alt="">
-          </router-link>
-
+          <div v-if="token">
+            <img src="../../img/icon_03.png" alt="" @click="dangD">
+          </div>
+          <div v-else>
+            <router-link to="/login">
+              <img src="../../img/icon_03.png" alt="">
+            </router-link>
+          </div>
           <div class="text">党员互动</div>
         </div>
       </div>
@@ -90,6 +97,7 @@
   import 'swiper/dist/css/swiper.css'
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
   import router from '../../router/index'
+  import {mapState} from 'vuex'
   export default {
     name: "index",
     components: {
@@ -125,10 +133,16 @@
       },
       enter(){
         router.push('/zhangLife')
+      },
+      dangD(){
+        router.push('/dangD')
       }
     },
     created() {
       this.getSwiper()
+    },
+    computed: {
+      ...mapState(['token','userInfo'])
     }
   }
 </script>

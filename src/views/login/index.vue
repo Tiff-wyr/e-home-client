@@ -1,16 +1,21 @@
 <template>
-  <div class="login">
+  <div class="pp">
     <div class="message">
+      <div @click="$router.go(-1)">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-shangyiye"></use>
+        </svg>
+      </div>
       <div class="title">登录</div>
     </div>
     <div class="tp">
       <img src="../../img/logo.png" alt="">
     </div>
     <div class="inp">
-      <form action="">
+      <form action="" enctype="multipart/form-data">
         <input type="text" placeholder="身份证号" v-model="formData.id_card">
         <input type="password" placeholder="密码" v-model="formData.password">
-        <button class="button" @click="login()">
+        <button class="button" @click="login">
             登录
         </button>
       </form>
@@ -49,7 +54,7 @@
               if(res.code == 1){
                 this.setToken(res.token)
                 this.setUser(res.data)
-                router.push('/myMessage')
+                router.push('/firstPage')
               }
             })
           }
@@ -60,7 +65,7 @@
 </script>
 
 <style scoped lang="scss">
-  .login {
+  .pp {
     background: #c50206;
     width: 7.5rem;
     height: 100vh;
@@ -74,6 +79,14 @@
         width: 7.1rem;
         margin: 0 auto;
         font-size: 0.34rem;
+      }
+      .icon{
+        width: 0.9rem;
+        height: 0.9rem;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
       }
     }
   }
@@ -110,6 +123,7 @@
     height: 0.832rem;
     border-radius: 0.1rem;
     border: none;
+    color: #fff;
   }
   input::-webkit-input-placeholder{
     color: #fff;

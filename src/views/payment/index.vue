@@ -1,5 +1,14 @@
 <template>
     <div>
+      <div class="message">
+        <div @click="$router.go(-1)">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shangyiye"></use>
+          </svg>
+        </div>
+
+        <div class="title">缴纳党费</div>
+      </div>
       <div class="zf">请选择支付方式</div>
       <div class="top" @click="wx(0)">
         <svg class="icon" aria-hidden="true">
@@ -16,11 +25,11 @@
         <img src="../../img/right.png" alt="" class="arrow">
       </div>
       <div v-show="isShowing" class="show">
-        <div class="mask" @click="mask()"></div>
+        <div class="mask" @click="mask"></div>
         <img src="../../img/weixin.png" alt="">
       </div>
       <div v-show="isShow" class="show">
-        <div class="mask"  @click="mask()"></div>
+        <div class="mask"  @click="mask"></div>
         <img src="../../img/zfb.jpg" alt="">
       </div>
     </div>
@@ -53,7 +62,29 @@
 </script>
 
 <style scoped lang="scss">
-.top,.bottom{
+  .message{
+    width: 7.5rem;
+    background:#c50206;
+    .title{
+      text-align: center;
+      color: #fff;
+      height: 0.86rem;
+      line-height: 0.86rem;
+      width: 7.1rem;
+      margin: 0 auto;
+      font-size: 0.34rem;
+    }
+    .icon{
+      width: 0.9rem;
+      height: 0.9rem;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .top,.bottom{
   display: flex;
   justify-content: space-around;
   align-items: center;

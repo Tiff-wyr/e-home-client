@@ -1,6 +1,12 @@
 <template>
     <div>
       <div class="inform">
+        <div  @click="$router.go(-1)">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shangyiye"></use>
+          </svg>
+        </div>
+
         <div class="title">个人信息</div>
         <div class="edit">编辑</div>
       </div>
@@ -98,25 +104,37 @@
 
 <style scoped lang="scss">
   .inform{
+    width: 7.5rem;
     background: #c50206;
-    width: 100%;
-    display: flex;
-  .title{
-    text-align: center;
-    color: #fff;
-    height: 0.86rem;
-    line-height: 0.86rem;
-    width: 6rem;
-    font-size: 0.34rem;
-  }
-    .edit{
-      font-size: 0.34rem;
-      height: 0.86rem;
-      width: 1.5rem;
-      line-height: 0.86rem;
+    .title{
       text-align: center;
+      color: #fff;
+      height: 0.86rem;
+      line-height: 0.86rem;
+      width: 7.1rem;
+      margin: 0 auto;
+      font-size: 0.34rem;
+    }
+    .icon{
+      width: 0.9rem;
+      height: 0.9rem;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .edit{
+      width: 0.9rem;
+      height: 0.4rem;
+      color: #fff;
+      position: absolute;
+      font-size: 0.35em;
+      right: 0;
+      top: 0.15rem;
     }
   }
+
+
   .main{
     display: flex;
     flex-direction: column;

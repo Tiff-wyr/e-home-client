@@ -36,6 +36,7 @@
 </script>
 
 <style scoped lang="scss">
+
 .main{
   display: flex;
   width: 7.5rem;
