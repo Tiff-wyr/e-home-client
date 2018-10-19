@@ -126,7 +126,10 @@
         router.push(`/swipperDetail/${id}`)
       },
       getSpace(type){
-        router.push(`/spaceDetail/${type}`)
+        router.push({
+          path: `/spaceDetail/${type}`,
+        }
+         )
       },
       todayD(){
         router.push('/todayD')

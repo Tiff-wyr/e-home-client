@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="message">
+      <div @click="$router.go(-1)">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-shangyiye"></use>
+        </svg>
+      </div>
+      <div class="title">{{title}}</div>
+    </div>
     <div class="spaceDetail" v-for="(item,index) in formData">
       <div class="left">
         <img :src="item.pic" alt="">
@@ -26,10 +34,43 @@
         name: "index",
       data(){
           return {
-            formData:[]
+            formData:[],
+            title:''
           }
       },
       methods:{
+          getTitle(type){
+            let title='';
+            switch (type) {
+              case "0" :
+                title = '信工新闻眼'
+                break
+              case "1" :
+                title = '特色活动'
+                break
+              case "3" :
+                title = '党建一点通'
+                break
+              case "4" :
+                title = '制度建设'
+                break
+              case "5" :
+                title = '党员亮身份'
+                break
+              case "6" :
+                title = '随时随地学'
+                break
+              case "7" :
+                title = '通知早知道'
+                break
+              case "8" :
+                title = '政治学习'
+                break
+              default:
+                break
+            }
+            this.title=title
+          },
         getSpaceDetail(type){
           this.$axios.get(`/hhdj/news/newsList.do?page=1&rows=10&type=${type}`).then(res=>{
             if (res.code == 1){
@@ -40,14 +81,35 @@
       },
       created(){
           let type=this.$route.params.id
-          console.log(type)
           this.getSpaceDetail(type)
+          this.getTitle(type)
 
       }
     }
 </script>
 
 <style scoped lang="scss">
+  .message{
+    width: 7.5rem;
+    background: #c50206;
+    .title{
+      text-align: center;
+      color: #fff;
+      height: 0.86rem;
+      line-height: 0.86rem;
+      width: 7.1rem;
+      margin: 0 auto;
+      font-size: 0.34rem;
+    }
+    .icon{
+      width: 0.9rem;
+      height: 0.9rem;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
   .spaceDetail{
     display: flex;
     padding: 0.2rem;

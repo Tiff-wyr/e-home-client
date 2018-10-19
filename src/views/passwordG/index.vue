@@ -6,7 +6,7 @@
             <use xlink:href="#icon-shangyiye"></use>
           </svg>
         </div>
-        <div class="title">修改密码</div>
+        <div class="title">{{$route.meta.title}}</div>
       </div>
     </div>
 </template>

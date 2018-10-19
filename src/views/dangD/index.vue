@@ -8,7 +8,7 @@
     </div>
     <div class="title">党员互动</div>
   </div>
-  <div class="reaction">
+
     <div class="chat" v-for="(item,index) in formData">
       <div class="top">
         <img :src="item.header" alt="">
@@ -30,17 +30,14 @@
         </div>
       </div>
       <div class="content">{{item.content}}</div>
-
-        <div class="reply" @click="enter(item.userId)">
+        <div class="reply" @click="enter(item)">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-liaotian1"></use>
           </svg>
           <div class="huifu">回复</div>
         </div>
-
-
     </div>
-  </div>
+
 
 </div>
 </template>
@@ -61,8 +58,16 @@
             }
           })
         },
-        enter(id){
-          this.$router.push(`/reactionDetail/${id}`)
+        enter(item){
+          this.$router.push({
+            path: `/reactionDetail/${item.forumId}`,
+            query: {
+              header: item.header,
+              username: item.username,
+              time: item.currentTime,
+              content: item.content
+            }
+          })
         }
       },
       created(){
@@ -122,7 +127,7 @@
     padding: 0.2rem 0;
     box-sizing: border-box;
   }
-    .reply{
+  .reply{
       display: flex;
       justify-content: flex-end;
       .icon{
@@ -133,7 +138,17 @@
         font-size: 0.3rem;
       }
     }
-
+  .chat{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    width: 7.54rem;
+    height: 2.82rem;
+    padding: 0.32rem;
+    border: 0.02rem solid #ccc;
+    margin: -0.02rem -0.02rem 0.02rem -0.02rem;
+    box-sizing: border-box;
+  }
 
   .message{
     width: 7.5rem;
@@ -156,15 +171,5 @@
     top: 0;
   }
   }
-  .chat{
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    width: 7.54rem;
-    height: 2.82rem;
-    padding: 0.32rem;
-    border: 0.02rem solid #ccc;
-    margin: -0.02rem -0.02rem 0.02rem -0.02rem;
-    box-sizing: border-box;
-  }
+
 </style>

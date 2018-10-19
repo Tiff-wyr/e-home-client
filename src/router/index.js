@@ -85,6 +85,9 @@ export default new Router({
     },
     {
       path: '/passwordG',
+      meta:{
+        title:"改密码"
+      },
       component: passwordG
     },
     {
