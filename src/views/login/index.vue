@@ -12,13 +12,13 @@
       <img src="../../img/logo.png" alt="">
     </div>
     <div class="inp">
-      <form action="" enctype="multipart/form-data">
+      <div>
         <input type="text" placeholder="身份证号" v-model="formData.id_card">
         <input type="password" placeholder="密码" v-model="formData.password">
         <button class="button" @click="login">
             登录
         </button>
-      </form>
+      </div>
     </div>
 
 
@@ -51,10 +51,10 @@
             form.append('password',this.formData.password)
             console.log(form);
             this.$axios.post('/hhdj/user/userLogin.do',form).then(res=>{
-              if(res.code == 1){
+              if(res.code === 1){
                 this.setToken(res.token)
                 this.setUser(res.data)
-                router.push('/firstPage')
+                router.push('/layout/myMessage')
               }
             })
           }

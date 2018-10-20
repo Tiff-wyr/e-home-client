@@ -18,6 +18,7 @@ import passwordG from '@/views/passwordG/index'
 import dangD from '@/views/dangD/index'
 import reactionDetail from '@/views/reactionDetail/index'
 import location from '@/views/location/index'
+import layout from '@/views/layout'
 
 
 Vue.use(Router)
@@ -26,7 +27,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/firstPage',
+      redirect: '/layout',
     },
     {
       path: '/swipperDetail/:id',
@@ -36,10 +37,7 @@ export default new Router({
       path: '/spaceDetail/:id',
       component: spaceDetail,
     },
-    {
-      path: '/firstPage',
-      component: firstPage,
-    },
+
     {
       path: '/zhangLife',
       component: zhangLife,
@@ -56,14 +54,8 @@ export default new Router({
       path: '/todayD',
       component: todayD,
     },
-    {
-      path: '/notification',
-      component: notification,
-    },
-    {
-      path: '/myMessage',
-      component: myMessage,
-    },
+
+
     {
       path: '/login',
       component: Login
@@ -86,8 +78,8 @@ export default new Router({
     },
     {
       path: '/passwordG',
-      meta:{
-        title:"改密码"
+      meta: {
+        title: "改密码"
       },
       component: passwordG
     },
@@ -100,8 +92,30 @@ export default new Router({
       component: reactionDetail
     },
     {
-      path: 'location',
+      path: '/location',
       component: location
     },
+    {
+      path: '/layout',
+      component: layout,
+      redirect: '/layout/myMessage',
+      children: [
+        {
+          path: 'myMessage',
+          name: 'three',
+          component: myMessage,
+        },
+        {
+          path: 'notification',
+          name: 'two',
+          component: notification,
+        },
+        {
+          path: 'firstPage',
+          name: 'one',
+          component: firstPage,
+        },
+      ]
+    }
   ]
 })

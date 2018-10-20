@@ -4,7 +4,7 @@
       <div class="title">我的党建</div>
     </div>
     <div class="banner">
-      <div class="tx"><img src="../../img/头像.png" alt=""></div>
+      <div class="tx"><img :src="userInfo.header" alt=""></div>
       <div v-if="!token">
         <div class="loging" @click="login">还没有登录，请登录</div>
       </div>
@@ -45,14 +45,14 @@
         退出登录
       </button>
     </div>
+
   </div>
-
-
 </template>
 
 <script>
   import router from '../../router/index'
   import {mapState, mapMutations} from 'vuex'
+
     export default {
         name: "index",
       data(){
@@ -119,6 +119,7 @@
       img{
         width: 1.25rem;
         height: 1.25rem;
+        border-radius: 50%;
         margin-top: 0.72916rem;
       }
     }

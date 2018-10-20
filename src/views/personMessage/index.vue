@@ -90,7 +90,7 @@
         getUser(){
           this.$axios.get('/hhdj/user/userInfo.do').then(res=>{
             console.log(res);
-            if(res.code == 1){
+            if(res.code === 1){
               this.userInfo=res.data
             }
           })

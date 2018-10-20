@@ -1,21 +1,18 @@
 <template>
   <div>
-    <header></header>
-    <router-view></router-view>
-    <footer></footer>
+    <router-view/>
+    <Footer></Footer>
   </div>
 
 </template>
 
 <script>
-  import footer from '../../components/footer/index'
-  import header from '../../components/header/index'
+  import Footer from '@/components/footer'
     export default {
       name: "index",
-      components:[
-        footer,
-        header,
-      ]
+      components: {
+      Footer
+    }
     }
 </script>
 

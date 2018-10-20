@@ -85,10 +85,11 @@
         <div class="img3" @click="getSpace(4)"></div>
       </div>
       <div class="right-back">
-        <div class="img4" @click="getLocation"></div>
+        <div class="img4"></div>
         <div class="img5" @click="getSpace(1)"></div>
       </div>
     </div>
+
 
   </div>
 </template>
@@ -102,7 +103,8 @@
     name: "index",
     components: {
       swiper,
-      swiperSlide
+      swiperSlide,
+
     },
     data() {
       return {
@@ -115,9 +117,6 @@
       }
     },
     methods: {
-      // getLocation(){
-      //   router.push('location')
-      // },
       getSwiper() {
         this.$axios.get('/hhdj/carousel/carouselList.do?type=0').then(res => {
           if (res.code == 1) {

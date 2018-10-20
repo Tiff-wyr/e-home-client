@@ -24,6 +24,7 @@
             formData:[]
           }
       },
+
       methods:{
         getData(){
           this.$axios.get('/hhdj/news/newsList.do?page=1&rows=10&type=2').then(res=>{
