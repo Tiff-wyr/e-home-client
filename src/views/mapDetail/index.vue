@@ -57,7 +57,6 @@
       }
     }
 </script>
-
 <style scoped lang="scss">
   .message{
     width: 7.5rem;

@@ -78,14 +78,14 @@
     <!--背景图-->
     <div class="back-img">
       <div class="left-back">
-        <div class="img1" @click="getSpace()"></div>
+        <div class="img1"></div>
       </div>
       <div class="middle-back">
         <div class="img2" @click="getSpace(6)"></div>
         <div class="img3" @click="getSpace(4)"></div>
       </div>
       <div class="right-back">
-        <div class="img4" @click="getSpace()"></div>
+        <div class="img4" @click="getLocation"></div>
         <div class="img5" @click="getSpace(1)"></div>
       </div>
     </div>
@@ -115,6 +115,9 @@
       }
     },
     methods: {
+      // getLocation(){
+      //   router.push('location')
+      // },
       getSwiper() {
         this.$axios.get('/hhdj/carousel/carouselList.do?type=0').then(res => {
           if (res.code == 1) {

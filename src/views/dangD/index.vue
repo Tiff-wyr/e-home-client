@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main">
   <div class="message">
     <div @click="$router.go(-1)">
       <svg class="icon" aria-hidden="true">
@@ -8,8 +8,7 @@
     </div>
     <div class="title">党员互动</div>
   </div>
-
-    <div class="chat" v-for="(item,index) in formData">
+  <div class="chat" v-for="(item,index) in formData">
       <div class="top">
         <img :src="item.header" alt="">
         <div class="top-middle">
@@ -37,8 +36,21 @@
           <div class="huifu">回复</div>
         </div>
     </div>
-
-
+  <div class="iconfont">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-tianjia"></use>
+    </svg>
+  </div>
+  <div class="publish" v-if="isShow">
+    <div class="mask" @click="mask"></div>
+    <div class="commend">
+      <div class="content"></div>
+      <div class="butt">
+        <button>发布</button>
+        <button>取消</button>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -47,10 +59,14 @@
         name: "index",
       data(){
           return {
-            formData:[]
+            formData:[],
+            isShow:true
           }
       },
       methods:{
+        mask(){
+          this.isShow=false
+        },
         getData(){
           this.$axios.get('/hhdj/forum/forumList.do?page=1&rows=10&type=0&cates=0').then(res=>{
             if(res.code == 1){
@@ -77,6 +93,58 @@
 </script>
 
 <style scoped lang="scss">
+  .main{
+    position: relative;
+  }
+.publish{
+  width: 7.5rem;
+  height: 13.34rem;
+  .commend{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 7.5rem;
+    height: 3.22rem;
+    padding: 0.1rem;
+    box-sizing: border-box;
+    z-index: 98;
+    background: #aaa;
+    text-align: center;
+    .content{
+      width: 7.1rem;
+      height: 2rem;
+      padding: 0.08rem;
+      box-sizing: border-box;
+      background: #fff;
+    }
+    .butt{
+      display: flex;
+      justify-content: space-between;
+      button{
+        font-size: 0.3rem;
+      }
+    }
+  }
+  .mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 11.12rem;
+    background: rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+}
+  .iconfont{
+    .icon{
+      width: 1rem;
+      color: #f00;
+      position: fixed;
+      right: 0.5rem;
+      bottom: 1rem;
+    }
+  }
   .top-right{
     margin-left: 0.1rem;
     font-size: 0.3rem;
@@ -149,7 +217,6 @@
     margin: -0.02rem -0.02rem 0.02rem -0.02rem;
     box-sizing: border-box;
   }
-
   .message{
     width: 7.5rem;
     background: #c50206;

@@ -42,7 +42,9 @@ class Axios {
   static post(url, data, config) {
     return this.fetch(url,data,config,'post')
   }
-
+  static options(url, data, config) {
+    return this.fetch(url,data,config,'options')
+  }
 }
 export default Axios
 

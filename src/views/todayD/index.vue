@@ -1,45 +1,54 @@
 <template>
-    <div class="today">
-      <div class="message">
-        <div @click="$router.go(-1)">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-shangyiye"></use>
-          </svg>
-        </div>
-        <div class="title">党史上的今天</div>
+  <div class="today">
+    <div class="message">
+      <div @click="$router.go(-1)">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-shangyiye"></use>
+        </svg>
       </div>
-      <div class="content" v-html="message"></div>
+      <div class="title">党史上的今天</div>
     </div>
+    <div class="content" v-html="content"></div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "index",
-      data(){
-          return {
-              message:'',
-          }
-      },
-      methods:{
-          getToday(){
-            this.$axios.get('/hhdj/proxy/proxy.do?url=http:%2F%2Fcpc.people.com.cn%2FGB%2F64162%2F64165%2F70486%2F70502%2Findex.html').then(res=>{
-              let str =res.split("<!--content-->")[1]
-              this.message=str.split("<!--p1 end-->")[0]
-              console.log(this.message);
-            })
-          }
-      },
-      created(){
-          this.getToday()
+  import getUrl from '../../util/geturl'
+  import cheerio from 'cheerio'
+
+  export default {
+    name: "index",
+    data() {
+      return {
+        content: ''
       }
+    },
+    methods: {
+      getToday(url) {
+        this.$axios.get(`/hhdj/proxy/proxy.do?url=${url}`).then(res => {
+          const $ = cheerio.load(res);
+          let content = $(".p1_02").html()
+          this.content = content
+        })
+      }
+    },
+    created() {
+      let data = new Date()
+      let month = data.getMonth() + 1
+      month = month > 9 ? '' + month : '0' + month
+      let day = data.getDate()
+      day = day > 9 ? '' + day : '0' + day
+      let url = getUrl(month, day)
+      this.getToday(url)
     }
+  }
 </script>
 
 <style scoped lang="scss">
-  .message{
+  .message {
     width: 7.5rem;
     background: #c50206;
-    .title{
+    .title {
       text-align: center;
       color: #fff;
       height: 0.86rem;
@@ -48,7 +57,7 @@
       margin: 0 auto;
       font-size: 0.34rem;
     }
-    .icon{
+    .icon {
       width: 0.9rem;
       height: 0.9rem;
       color: #fff;
@@ -59,8 +68,10 @@
   }
 
   .content {
+    padding: 0.1rem 0.2rem;
     width: 7.5rem;
     height: 100%;
     font-size: 0;
+    box-sizing: border-box;
   }
 </style>

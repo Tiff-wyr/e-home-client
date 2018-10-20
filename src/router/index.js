@@ -17,6 +17,7 @@ import scoreM from '@/views/scoreM/index'
 import passwordG from '@/views/passwordG/index'
 import dangD from '@/views/dangD/index'
 import reactionDetail from '@/views/reactionDetail/index'
+import location from '@/views/location/index'
 
 
 Vue.use(Router)
@@ -97,6 +98,10 @@ export default new Router({
     {
       path: '/reactionDetail/:id',
       component: reactionDetail
+    },
+    {
+      path: 'location',
+      component: location
     },
   ]
 })
