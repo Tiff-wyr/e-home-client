@@ -1,5 +1,6 @@
 <template>
-  <div class="header">
+  <div>
+
   </div>
 </template>
 
@@ -10,9 +11,5 @@
 </script>
 
 <style scoped>
-.header{
-  background: #c50206;
-  width: 7.5rem;
-  height: 0.86rem;
-}
+
 </style>

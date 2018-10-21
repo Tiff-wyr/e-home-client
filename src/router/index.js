@@ -19,6 +19,10 @@ import dangD from '@/views/dangD/index'
 import reactionDetail from '@/views/reactionDetail/index'
 import location from '@/views/location/index'
 import layout from '@/views/layout'
+import comment from '@/views/comment'
+import summary from '@/views/summary'
+import discuss from '@/views/discuss'
+import detail from '@/views/detail'
 
 
 Vue.use(Router)
@@ -51,6 +55,10 @@ export default new Router({
       component: informDetail,
     },
     {
+      path: '/detail/:id',
+      component: detail,
+    },
+    {
       path: '/todayD',
       component: todayD,
     },
@@ -59,6 +67,14 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/summary',
+      component: summary
+    },
+    {
+      path: '/discuss',
+      component: discuss
     },
     {
       path: '/payment',
@@ -71,6 +87,10 @@ export default new Router({
     {
       path: '/personScore',
       component: personScore
+    },
+    {
+      path: '/comment',
+      component: comment
     },
     {
       path: '/scoreM',

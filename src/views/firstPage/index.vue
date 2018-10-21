@@ -1,5 +1,5 @@
 <template>
-  <div class="first-page">
+  <div class="first-page container">
     <div class="head clearfix">
       <img src="../../img/logo.png" alt="" class="fll">
       <div v-if="!token">
@@ -85,7 +85,7 @@
         <div class="img3" @click="getSpace(4)"></div>
       </div>
       <div class="right-back">
-        <div class="img4"></div>
+        <div class="img4" @click="location"></div>
         <div class="img5" @click="getSpace(1)"></div>
       </div>
     </div>
@@ -104,7 +104,6 @@
     components: {
       swiper,
       swiperSlide,
-
     },
     data() {
       return {
@@ -117,6 +116,9 @@
       }
     },
     methods: {
+      location(){
+        router.push('/location')
+      },
       getSwiper() {
         this.$axios.get('/hhdj/carousel/carouselList.do?type=0').then(res => {
           if (res.code == 1) {
@@ -153,6 +155,9 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    padding-bottom: 0.92rem;
+  }
   .first-page {
     overflow:-moz-scrollbars-vertical;
   }

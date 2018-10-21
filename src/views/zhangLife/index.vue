@@ -28,7 +28,7 @@
         </div>
         <div class="bottom">
           <div class="left">
-            <img src="../../img/icon4.png" alt="">
+            <img src="../../img/icon4.png" alt="" @click="comment">
             <div class="text">民主评议</div>
           </div>
           <div class="middle">
@@ -52,6 +52,9 @@ import router from '../../router/index'
       methods:{
         map(){
           router.push('/mapDetail')
+        },
+        comment(){
+          router.push('/comment')
         }
       },
 

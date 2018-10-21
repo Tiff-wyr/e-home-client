@@ -4,7 +4,7 @@
       <div class="title">我的党建</div>
     </div>
     <div class="banner">
-      <div class="tx"><img :src="userInfo.header" alt=""></div>
+      <div class="tx"><img :src="userInfo ? userInfo.header : '/static/img/header.png' " alt=""></div>
       <div v-if="!token">
         <div class="loging" @click="login">还没有登录，请登录</div>
       </div>
